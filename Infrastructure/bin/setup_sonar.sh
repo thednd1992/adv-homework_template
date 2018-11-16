@@ -13,4 +13,7 @@ echo "Setting up Sonarqube in project $GUID-sonarqube"
 # Ideally just calls a template
 # oc new-app -f ../templates/sonarqube.yaml --param .....
 
-# To be Implemented by Student
+# Implemented by vbaum
+
+oc project $GUID-sonarqube 
+oc process -f Infrastructure/templates/template-sonarqube.yml -n ${GUID}-sonarqube -p GUID=${GUID} | oc create -n ${GUID}-sonarqube -f -

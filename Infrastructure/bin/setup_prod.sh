@@ -14,6 +14,8 @@ echo "Setting up Parks Production Environment in project ${GUID}-parks-prod"
 
 # Implemented by vbaum
 
+sleep 300
+
 oc project $GUID-parks-prod 
 oc policy add-role-to-user view --serviceaccount=default -n $GUID-parks-prod
 oc policy add-role-to-group system:image-puller system:serviceaccounts:$GUID-parks-prod -n $GUID-parks-dev

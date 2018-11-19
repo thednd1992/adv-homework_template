@@ -5,7 +5,7 @@ metadata:
 spec:
   source:
     git:
-      uri: "https://github.com/vbaum42/openshift-advanced-dev-homework.git"
+      uri: "https://github.com/vbaum42/openshift3-advanced-dev-homework.git"
   strategy:
     jenkinsPipelineStrategy:
       jenkinsfilePath: Nationalparks/Jenkinsfile

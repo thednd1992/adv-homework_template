@@ -30,6 +30,8 @@ echo "Setting up Nexus in project $GUID-nexus"
 
 # Implemented by vbaum
 
+sleep 120
+
 oc project $GUID-nexus 
 oc process -f Infrastructure/templates/template-nexus.yml -n ${GUID}-nexus -p GUID=${GUID} | oc create -n ${GUID}-nexus -f -
 oc expose svc nexus3 -n ${GUID}-nexus

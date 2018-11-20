@@ -30,9 +30,6 @@ echo "Setting up Jenkins in project ${GUID}-jenkins from Git Repo ${REPO} for Cl
 
 oc project $GUID-jenkins
 
-sleep 120
-
-
 oc process -f Infrastructure/templates/template-jenkins.yml -n ${GUID}-jenkins -p GUID=${GUID} | oc create -n ${GUID}-jenkins -f -
 
 while : ; do

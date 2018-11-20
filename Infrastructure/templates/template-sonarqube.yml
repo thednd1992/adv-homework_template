@@ -127,12 +127,12 @@ objects:
     strategy:
       activeDeadlineSeconds: 21600
       recreateParams:
-        timeoutSeconds: 600
+        timeoutSeconds: 6000
       rollingParams:
         intervalSeconds: 1
         maxSurge: 25%
         maxUnavailable: 25%
-        timeoutSeconds: 600
+        timeoutSeconds: 6000
         updatePeriodSeconds: 1
       type: Recreate
     template:

@@ -20,6 +20,10 @@ oc project $GUID-sonarqube
 sleep 180
 
 oc process -f Infrastructure/templates/template-sonarqube.yml -n ${GUID}-sonarqube -p GUID=${GUID} | oc create -n ${GUID}-sonarqube -f -
+oc rollout pause dc sonarqube -n ${GUID}-sonarqube
+oc patch dc/sonarqube -p '{"spec":{"strategy":{"recreateParams":{"timeoutSeconds":6000}}}}' -n ${GUID}-sonarqube
+oc rollout resume dc sonarqube -n ${GUID}-sonarqube
+
 
 while : ; do
     echo "Checking if Sonarqube is Ready..."

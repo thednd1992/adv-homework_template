@@ -12,7 +12,7 @@ objects:
     - ReadWriteOnce
     resources:
       requests:
-        storage: 4Gi
+        storage: 6Gi
 - apiVersion: v1
   kind: PersistentVolumeClaim
   metadata:
@@ -22,7 +22,7 @@ objects:
     - ReadWriteOnce
     resources:
       requests:
-        storage: 4Gi
+        storage: 6Gi
 - apiVersion: v1
   kind: DeploymentConfig
   metadata:
@@ -81,7 +81,7 @@ objects:
             timeoutSeconds: 1
           resources:
             limits:
-              memory: 512Mi
+              memory: 1Gi
           securityContext:
             capabilities: {}
             privileged: false

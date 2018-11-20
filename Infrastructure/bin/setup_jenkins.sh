@@ -32,11 +32,8 @@ oc project $GUID-jenkins
 
 sleep 120
 
-oc new-app jenkins-persistent --param ENABLE_OAUTH=true --param MEMORY_LIMIT=6Gi --param VOLUME_CAPACITY=8Gi -n ${GUID}-jenkins
-oc rollout pause dc jenkins -n ${GUID}-jenkins
-oc set resources dc jenkins --limits=memory=4Gi,cpu=2 --requests=memory=1Gi,cpu=1 -n ${GUID}-jenkins
-oc patch dc/jenkins -p '{"spec":{"strategy":{"recreateParams":{"timeoutSeconds":6000}}}}' -n ${GUID}-jenkins
-oc rollout resume dc jenkins -n ${GUID}-jenkins
+
+oc process -f Infrastructure/templates/template-jenkins.yml -n ${GUID}-jenkins -p GUID=${GUID} | oc create -n ${GUID}-jenkins -f -
 
 while : ; do
     echo "Checking if Jenkins is Ready..."

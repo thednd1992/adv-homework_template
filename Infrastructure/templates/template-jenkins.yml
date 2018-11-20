@@ -77,10 +77,11 @@ objects:
             timeoutSeconds: 600
           resources:
             limits:
-              cpu: "2"
-              memory: ${MEMORY_LIMIT}
+              cpu: 2
+              memory: 4Gi
             requests:
-              cpu: 500m
+              cpu: 1
+              memory: 2Gi
           securityContext:
             capabilities: {}
             privileged: false
@@ -203,7 +204,7 @@ objects:
     - ReadWriteOnce
     resources:
       requests:
-        storage: ${JENKINS_VOLUME}
+        storage: 6Gi
 parameters:
   - displayName: Jenkins volume size
     name: JENKINS_VOLUME

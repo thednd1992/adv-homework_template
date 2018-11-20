@@ -80,8 +80,8 @@ objects:
               cpu: 2
               memory: 4Gi
             requests:
-              cpu: 1
-              memory: 2Gi
+              cpu: 0.5
+              memory: 4Gi
           securityContext:
             capabilities: {}
             privileged: false
@@ -204,16 +204,16 @@ objects:
     - ReadWriteOnce
     resources:
       requests:
-        storage: 6Gi
+        storage: 8Gi
 parameters:
   - displayName: Jenkins volume size
     name: JENKINS_VOLUME
     required: true
-    value: 4Gi
+    value: 6Gi
   - displayName: Jenkins memory limit
     name: MEMORY_LIMIT
     required: true
-    value: 2Gi
+    value: 4Gi
   - displayName: GUID
     name: GUID
     required: true

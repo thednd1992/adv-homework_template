@@ -36,8 +36,8 @@ oc set resources dc jenkins --limits=memory=4Gi,cpu=2 --requests=memory=2Gi,cpu=
 oc rollout resume dc jenkins -n ${GUID}-jenkins
 
 while : ; do
-    oc get pod -n ${GUID}-jenkins | grep -v deploy | grep "1/1"
     echo "Checking if Jenkins is Ready..."
+    oc get pod -n ${GUID}-jenkins | grep -v deploy | grep "1/1"
     if [ $? == "1" ] 
       then 
       echo "Waiting 10 seconds..."
@@ -51,8 +51,8 @@ oc new-build --name=jenkins-slave-appdev --dockerfile=$'FROM docker.io/openshift
 
 
 while : ; do
-	oc get pod -n ${GUID}-jenkins | grep 'slave' | grep "Completed"
 	echo "Checking if Jenkins-app-slave is Ready..."
+	oc get pod -n ${GUID}-jenkins | grep 'slave' | grep "Completed"
 	if [ $? == "0" ] 
 		then 
 		echo 'jenkins-slave-appdev build completed'

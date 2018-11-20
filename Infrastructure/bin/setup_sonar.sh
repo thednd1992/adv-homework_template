@@ -16,6 +16,9 @@ echo "Setting up Sonarqube in project $GUID-sonarqube"
 # Implemented by vbaum
 
 oc project $GUID-sonarqube 
+
+sleep 180
+
 oc process -f Infrastructure/templates/template-sonarqube.yml -n ${GUID}-sonarqube -p GUID=${GUID} | oc create -n ${GUID}-sonarqube -f -
 
 while : ; do

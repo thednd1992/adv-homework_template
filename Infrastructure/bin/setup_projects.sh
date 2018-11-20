@@ -9,6 +9,15 @@ fi
 GUID=$1
 USER=$2
 
+echo "Removing all Homework Projects for GUID=$GUID"
+oc delete project $GUID-nexus
+oc delete project $GUID-sonarqube
+oc delete project $GUID-jenkins
+oc delete project $GUID-parks-dev
+oc delete project $GUID-parks-prod
+
+sleep 120
+
 echo "Creating all Homework Projects for GUID=${GUID} and USER=${USER}"
 oc new-project ${GUID}-nexus        --display-name="${GUID} AdvDev Homework Nexus"
 oc new-project ${GUID}-sonarqube    --display-name="${GUID} AdvDev Homework Sonarqube"

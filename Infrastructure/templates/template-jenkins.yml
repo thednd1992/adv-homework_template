@@ -80,8 +80,7 @@ objects:
               cpu: 2
               memory: 4Gi
             requests:
-              cpu: 0.5
-              memory: 4Gi
+              cpu: 1
           securityContext:
             capabilities: {}
             privileged: false
@@ -100,7 +99,7 @@ objects:
         volumes:
         - name: jenkins-data
           persistentVolumeClaim:
-            claimName: jenkins-pvc
+            claimName: jenkins
     triggers:
     - imageChangeParams:
         automatic: true
@@ -140,6 +139,8 @@ objects:
   metadata:
     annotations:
       openshift.io/generated-by: OpenShiftNewApp
+      service.alpha.openshift.io/dependencies: '[{"name": "jenkins-jnlp", "namespace": "", "kind": "Service"}]'
+      service.openshift.io/infrastructure: 'true'
     creationTimestamp: null
     labels:
       app: jenkins
@@ -170,7 +171,6 @@ objects:
     name: jenkins-jnlp
     namespace: ${GUID}-jenkins
   spec:
-    clusterIP: 172.30.236.25
     ports:
     - name: agent
       port: 50000
@@ -182,15 +182,6 @@ objects:
     type: ClusterIP
   status:
     loadBalancer: {}
-- apiVersion: v1
-  kind: ServiceAccount
-  metadata:
-    annotations:
-      serviceaccounts.openshift.io/oauth-redirectreference.jenkins: '{"kind":"OAuthRedirectReference","apiVersion":"v1","reference":{"kind":"Route","name":"jenkins"}}'
-    labels:
-      app: jenkins
-      template: jenkins-template
-    name: jenkins
 - apiVersion: v1
   kind: PersistentVolumeClaim
   metadata:

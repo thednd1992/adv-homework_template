@@ -80,7 +80,7 @@ objects:
             limits:
               memory: 4Gi
             requests:
-              memory: 4Gi
+              memory: 1Gi
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
           volumeMounts:

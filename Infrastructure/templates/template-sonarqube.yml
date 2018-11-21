@@ -177,7 +177,7 @@ objects:
             timeoutSeconds: 1
           resources:
             limits:
-              memory: 4Gi
+              memory: 3Gi
             requests:
               memory: 2Gi
           terminationMessagePath: /dev/termination-log
